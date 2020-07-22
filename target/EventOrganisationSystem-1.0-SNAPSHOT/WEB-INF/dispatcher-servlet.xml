@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context   http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+<!--    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="Event*.htm">EventOrganisationController</prop>
+            </props>
+        </property>
+    </bean>-->
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+
+                
+                <prop key="EventOwner*.htm">EventOwnerController</prop>
+                <prop key="EventOrganisationLogin.htm">EventOrganisationController</prop>
+                <prop key="EventUserReg.htm">EventOrganisationController</prop>
+                <prop key="EventUserAdd.htm">EventOrganisationController</prop>
+                <prop key="EventLoginCheck.htm">EventOrganisationController</prop>
+                <prop key="EventOrder*.htm">EventOrderController</prop>
+                <prop key="EventCustomerOptionSelected.htm">EventOrderController</prop>
+                <prop key="EventDateSelected.htm">EventOrderController</prop>
+                
+                <prop key="EventAdminRequest.htm">EventOrganisationController</prop>
+                <prop key="EventAdminAddedFood.htm">EventOrganisationController</prop>
+                <prop key="EventAdminAddedLoc.htm">EventOrganisationController</prop>
+                
+                <prop key="EventOrderDel.htm">EventOrganisationController</prop>
+                <prop key="EventOrderStartAgain.htm">EventOrganisationController</prop>
+                <prop key="EventOrderWorkerChange.htm">EventOrganisationController</prop>
+                <prop key="EventFoodDel.htm">EventOrganisationController</prop>
+                <prop key="EventSystemLogout.htm">EventOrganisationController</prop>
+                
+                <prop key="EventSystemLogout.htm">EventOrganisationController</prop>
+                <prop key="EventVenueUp.htm">EventOwnerController</prop>
+                <prop key="EventVenueUpdated.htm">EventOwnerController</prop>
+                <prop key="EventVenueDel.htm">EventOwnerController</prop>
+                <prop key="EventWorkerUp.htm">EventOwnerController</prop>
+                <prop key="EventWorkerUpdated.htm">EventOwnerController</prop>
+                <prop key="EventWorkerDel.htm">EventOwnerController</prop>
+                
+<!--                <prop key="EventAdminHomePage.htm">EventOwnerController</prop>-->
+                
+                <!--                <prop key="movieBrowse.htm">MovieController</prop>
+                <prop key="movieAdd.htm">MovieController</prop>
+                <prop key="movieUpdate.htm">MovieController</prop>
+                <prop key="movieUpdated.htm">MovieController</prop>
+                <prop key="movieDelete.htm">MovieController</prop>-->
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+<!--    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="EventOrganisationLogin" />-->
+    <bean name="EventOrganisationController" class="com.eventorg.controller.EventOrganisationController"/>
+    <bean name="EventOwnerController" class="com.eventorg.controller.EventOwnerController"/>
+    <bean name="EventOrderController" class="com.eventorg.controller.EventOrderController"/>
+
+</beans>
